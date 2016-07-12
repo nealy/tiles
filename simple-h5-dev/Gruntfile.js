@@ -8,10 +8,9 @@ module.exports = function(grunt) {
             },
             server: {
                 options: {
-                    open: true,
-                    base: [
-                        '/'
-                    ]
+                    open: {
+                        target: 'http://localhost:8000/src/index/index.html'
+                    }
                 }
             }
         }
@@ -20,5 +19,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
 
     // default task
-    grunt.registerTask('default', ['connect']);
+    grunt.registerTask('default', []);
+
+    grunt.registerTask('run', 'start a connect web server', function() {
+        grunt.task.run('connect:server:keepalive');
+    });
 };
